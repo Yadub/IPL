@@ -119,8 +119,25 @@ def download_match_data(url, filename='output', save_path='./', display=True):
 
 if __name__ == '__main__':
     # Load IPL photos page
-    url = "https://www.cricbuzz.com/live-cricket-scorecard/29793/gaw-vs-bt-22nd-match-caribbean-premier-league-2020"
-    download_match_data(url)
+    url = "https://www.cricbuzz.com/live-cricket-scorecard/29935/nor-vs-warks-central-group-t20-blast-2020"
+    data = download_match_data(url, display=False)
+
+    # How to access the data below:
+    print(data.keys()) # See the keys of this dict
+    keys = data.keys()
+    # These are top level results:
+    print(data['match_result']) # String
+    print(data['match_info']) # Pandas DataFrame
+    print(data['further_info']) # Pandas DataFrame
+    # This is the innings 1 dictionary within the data dictionary
+    innings_1 = data['innings_1']
+    print(innings_1)
+    print(innings_1.keys()) # Keys within the innings data\
+    print(innings_1['innings_name']) # String
+    print(innings_1['innings_score']) # String
+    print(innings_1['batting_data']) # Pandas DataFrame
+    print(innings_1['bowling_data']) # Pandas DataFrame
+    print(innings_1['power_play_data']) # Pandas DataFrame
 
     # To load previously downloaded data use the following line of code in python
-    # data = pickle.load(open('./data.pkl', 'rb'))
+    # data = pickle.load(open('./output.pkl', 'rb'))
